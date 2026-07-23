@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
-import nodemailer from "nodemailer";
 import dotenv from "dotenv";
+import { Resend } from "resend";
 
 dotenv.config();
 
@@ -10,13 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.PASSWORD,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.post("/api/contact", async (req, res) => {
   try {
@@ -25,13 +19,13 @@ app.post("/api/contact", async (req, res) => {
     if (!name || !email || !message) {
       return res.status(400).json({
         success: false,
-        message: "All fields are required.",
+        message: "All fields are required",
       });
     }
 
-    await transporter.sendMail({
-      from: process.env.EMAIL,
-      to: process.env.EMAIL,
+    const data = await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: process.env.TO_EMAIL,
       subject: "New Portfolio Contact",
       html: `
         <h2>New Contact Request</h2>
@@ -46,20 +40,21 @@ app.post("/api/contact", async (req, res) => {
       `,
     });
 
-    res.json({
+    return res.status(200).json({
       success: true,
       message: "Email sent successfully",
+      data,
     });
   } catch (err) {
-    console.log(err);
+    console.error(err);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
-      message: "Something went wrong",
+      message: err.message,
     });
   }
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on ${process.env.PORT}`);
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`Server running on ${process.env.PORT || 5000}`);
 });
