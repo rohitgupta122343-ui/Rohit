@@ -223,7 +223,7 @@ const ContactSection = () => {
               ))}
             </div>
             <p className="font-body text-xs text-foreground/30">
-              © 2026 Ritul Jain. All rights reserved.
+              © 2026 Rohit Gupta. All rights reserved.
             </p>
           </div>
         </div>
