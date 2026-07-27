@@ -38,41 +38,40 @@ const AboutSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative z-20 min-h-screen px-6 py-32 md:px-12 lg:px-24"
-      style={{ marginTop: "100vh" }}
+      className="relative z-20 min-h-screen px-6 py-32 md:px-12 lg:px-24 bg-transparent text-white"
     >
       <div ref={contentRef} className="mx-auto max-w-5xl">
         {/* Section Label */}
         <div className="about-text mb-16">
-          <span className="font-body text-xs tracking-[0.5em] text-muted-foreground/50">
+          <span className="font-body text-xs tracking-[0.5em] text-emerald-400 font-medium">
             01 — ABOUT ME
           </span>
         </div>
 
         {/* Heading */}
         <div className="space-y-12">
-          <h2 className="about-text font-display text-4xl font-medium leading-tight text-foreground md:text-5xl lg:text-6xl">
-            <span className="char-emerald">Designing</span> immersive digital
+          <h2 className="about-text font-display text-4xl font-medium leading-tight text-white md:text-5xl lg:text-6xl">
+            <span className="text-emerald-400">Designing</span> immersive digital
             experiences where creativity meets code.
           </h2>
 
           {/* Paragraph 1 */}
-          <p className="about-text font-body text-lg leading-relaxed text-foreground/70 md:text-xl">
-            Hi, I'm <span className="text-foreground font-medium">Rohit Gupta</span>,
+          <p className="about-text font-body text-lg leading-relaxed text-neutral-300 md:text-xl">
+            Hi, I'm <span className="text-white font-medium">Rohit Gupta</span>,
             a passionate Full-Stack Developer based in{" "}
-            <span className="text-foreground font-medium">Mumbai, India</span>.
+            <span className="text-white font-medium">Mumbai, India</span>.
             I enjoy creating modern, interactive websites that combine beautiful
             design with smooth user experiences. My goal is to build products
             that people love using while continuously learning new technologies.
           </p>
 
           {/* Paragraph 2 */}
-          <p className="about-text font-body text-lg leading-relaxed text-foreground/70 md:text-xl">
+          <p className="about-text font-body text-lg leading-relaxed text-neutral-300 md:text-xl">
             I specialize in the{" "}
-            <span className="text-foreground">MERN Stack</span> and have a
+            <span className="text-emerald-400 font-medium">MERN Stack</span> and have a
             strong interest in creative web development. I love experimenting
             with{" "}
-            <span className="text-foreground">
+            <span className="text-emerald-400 font-medium">
               GSAP, Three.js, Framer Motion
             </span>{" "}
             and AI-powered tools to craft engaging digital experiences with
@@ -80,7 +79,7 @@ const AboutSection = () => {
           </p>
 
           {/* Paragraph 3 */}
-          <p className="about-text font-body text-lg leading-relaxed text-foreground/70 md:text-xl">
+          <p className="about-text font-body text-lg leading-relaxed text-neutral-300 md:text-xl">
             Every project is an opportunity to improve my skills, solve
             real-world problems, and push the boundaries of what's possible on
             the web. Whether I'm building a portfolio, dashboard, SaaS product,
@@ -109,10 +108,10 @@ const AboutSection = () => {
               },
             ].map((stat, i) => (
               <div key={i} className="text-center md:text-left">
-                <div className="font-display text-3xl font-medium text-foreground md:text-4xl">
+                <div className="font-display text-3xl font-medium text-white md:text-4xl">
                   {stat.value}
                 </div>
-                <div className="mt-2 font-body text-xs tracking-[0.2em] uppercase text-foreground/40">
+                <div className="mt-2 font-body text-xs tracking-[0.2em] uppercase text-neutral-400">
                   {stat.label}
                 </div>
               </div>
